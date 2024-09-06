@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9C6C8755-6D00-4077-AA6C-2DF8F811AC8C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DataModels</RootNamespace>
+    <AssemblyName>DataModels</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <TargetFrameworkProfile />
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\Libraries\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Context\DBContextAddBusiness.cs" />
+    <Compile Include="Context\DBContextExceptionLog.cs" />
+    <Compile Include="Context\DBContextMTBCPatientInsurance.cs" />
+    <Compile Include="Context\DbContextSearchOrder.cs" />
+    <Compile Include="Context\DbContextSecurity.cs" />
+    <Compile Include="Context\DBContextSurveyAutomation.cs" />
+    <Compile Include="Context\SpContext.cs" />
+    <Compile Include="EntityHelper.cs" />
+    <Compile Include="GenericRepository\GenericRepository.cs" />
+    <Compile Include="GenericRepository\SpRepository.cs" />
+    <Compile Include="HelperClasses\CSVHelper.cs" />
+    <Compile Include="HelperClasses\HelperClasses.cs" />
+    <Compile Include="Models\AddBusiness\AddBusiness.cs" />
+    <Compile Include="Models\BaseModel.cs" />
+    <Compile Include="Models\CommonModel\Common.cs" />
+    <Compile Include="Models\EligibilityService\EligibilityModel.cs" />
+    <Compile Include="Models\Exceptions\BusinessException.cs" />
+    <Compile Include="Models\Exceptions\ExceptionModel.cs" />
+    <Compile Include="Models\ExportToExcel\ExportToExcel.cs" />
+    <Compile Include="Models\ExternalUserModel\CityDetailByZipCodeRequestModel.cs" />
+    <Compile Include="Models\ExternalUserModel\CityDetailByZipCodeResponseModel.cs" />
+    <Compile Include="Models\ExternalUserModel\ExternalUserSignupResponseModel.cs" />
+    <Compile Include="Models\ExternalUserModel\FoxTBLPracticeOrganizationResponseModel.cs" />
+    <Compile Include="Models\ExternalUserModel\FOX_TBL_PRACTICE_ORGANIZATION.cs" />
+    <Compile Include="Models\ExternalUserModel\SmartIdentifierResponseModel.cs" />
+    <Compile Include="Models\ExternalUserModel\SmartSearchRequest.cs" />
+    <Compile Include="Models\ExternalUserModel\SmartSpecialitySearchResponseModel.cs" />
+    <Compile Include="Models\ExternalUserModel\Speciality.cs" />
+    <Compile Include="Models\ExternalUserModel\UserDetailsByNPIRequestModel.cs" />
+    <Compile Include="Models\ExternalUserModel\UserDetailsByNPIResponseModel.cs" />
+    <Compile Include="Models\ExternalUserModel\Zip_City_State.cs" />
+    <Compile Include="Models\GoogleRecaptcha\GoogleRecaptchaResponse.cs" />
+    <Compile Include="Models\Security\BasicAuthenticationIdentity.cs" />
+    <Compile Include="Models\Security\FOX_TBL_OTP_ENABLE_DATE.cs" />
+    <Compile Include="Models\Security\PasswordHistory.cs" />
+    <Compile Include="Models\Security\ProfileToken.cs" />
+    <Compile Include="Models\Security\ReferralRegion.cs" />
+    <Compile Include="Models\Security\User.cs" />
+    <Compile Include="Models\Security\UserProfile.cs" />
+    <Compile Include="Models\SenderName\SenderNameModel.cs" />
+    <Compile Include="Models\SenderType\SenderTypeModel.cs" />
+    <Compile Include="Models\ServiceConfiguration\ServiceConfiguration.cs" />
+    <Compile Include="Models\StatesModel\States.cs" />
+    <Compile Include="Models\SurveyAutomation\SurveyAutomation.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
