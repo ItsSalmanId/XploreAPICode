@@ -398,6 +398,15 @@
     <Content Include="Content\images\fox-image.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="FoxDocumentDirectory\RequestForOrder\UploadImages\bandicam 2024-08-22 21-05-38-2_638611711573421815.mp4" />
+    <Content Include="FoxDocumentDirectory\RequestForOrder\UploadImages\Captur2e - Copy %282%29_638611712113460342.PNG" />
+    <Content Include="FoxDocumentDirectory\RequestForOrder\UploadImages\Captur2e - Copy %282%29_638612102631334198.PNG" />
+    <Content Include="FoxDocumentDirectory\RequestForOrder\UploadImages\Captur2e - Copy_638611712112472139.PNG" />
+    <Content Include="FoxDocumentDirectory\RequestForOrder\UploadImages\Captur2e - Copy_638612102631699124.PNG" />
+    <Content Include="FoxDocumentDirectory\RequestForOrder\UploadImages\Captur2e_638611712113530356.PNG" />
+    <Content Include="FoxDocumentDirectory\RequestForOrder\UploadImages\Captur2e_638612102632365285.PNG" />
+    <Content Include="FOXLocalDocuments\TemporaryFiles\QRCode\2021\Dec\10\54818434_637747387815970121.jpg" />
+    <Content Include="FOXLocalDocuments\TemporaryFiles\QRCode\2021\Dec\3\54818378_637741444932625146.jpg" />
     <Content Include="Global.asax" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
     <Content Include="Areas\HelpPage\Views\Shared\_Layout.cshtml" />
@@ -457,6 +466,11 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="bin\roslyn\" />
+    <Folder Include="CriticalTokenExceptionLog\" />
+    <Folder Include="FoxCriticalTokenExceptionLog\" />
+    <Folder Include="FoxDocumentDirectory\PatientSurveyLogFiles\" />
+    <Folder Include="FoxDocumentDirectory\PatientSurvey\UploadFiles\" />
+    <Folder Include="FOXLocalDocuments\TemporaryFiles\QRCode\2024\May\6\" />
     <Folder Include="HtmlTemplates\" />
     <Folder Include="Views\EvaluationSetup\" />
     <Folder Include="Views\Group\" />

@@ -16,6 +16,7 @@ namespace BusinessOperations.SurveyAutomationService
         ResponseModel AddUpdateBusiness(BusinessDetail objBusinessDetail);
         ResponseModel AddUpdateBlogBusiness(BusinessBlogDetail objBusinessBlogDetail);
         List<BusinessDetail> GetBusinessDetails(BusinessDetail objBusinessDetail);
+        List<BusinessCategory> GetBusinessByCategory(BusinessDetail objBusinessDetail);
         BusinessDetail GetSelectedBusiness(BusinessDetail objBusinessDetail);
         ResponseModel DeleteBusinessDetails(long businessId);
         ResponseModel DeleteSelectedImage(BusinessFilesDetailList[] objbusinessFilesList);

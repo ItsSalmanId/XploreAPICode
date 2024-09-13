@@ -21,6 +21,7 @@ using System.Web.Configuration;
 using System.Configuration;
 using System.Diagnostics.CodeAnalysis;
 using DocumentFormat.OpenXml.Wordprocessing;
+using System.Net;
 
 namespace BusinessOperations.CommonService
 {
@@ -1075,6 +1076,43 @@ namespace BusinessOperations.CommonService
 
         }
         [ExcludeFromCodeCoverage]
+        public static void CustomExceptionLogTest(string context)
+        {
+
+            //var excpParam = JsonConvert.SerializeObject(context.ActionContext.ActionArguments.Values);
+            //var uri = context.ActionContext.Request.RequestUri.OriginalString;
+            //var excpMsg = context.Exception.Message;
+            //var excpStackTrace = context.Exception.StackTrace;
+            //var excpInnerMessage = ((context.Exception.InnerException != null && context.Exception.InnerException.Message != null) ? (context.Exception.InnerException.Message.ToLower().Contains("inner exception") ? context.Exception.InnerException.InnerException.Message : context.Exception.InnerException.Message) : "NULL");
+
+
+            //Log Critical errors
+            //string directoryOther = System.Web.HttpContext.Current.Server.MapPath(AppConfiguration.ErrorLogPath + "\\FoxCriticalErrors");
+            try
+            {
+                //string directoryOther = System.Web.HttpContext.Current.Server.MapPath("\\FoxCriticalErrorsCustom");
+                string directoryOther = ("C:\\inetpub\\wwwroot\\XploreAPI\\FoxCriticalErrorsCustom");
+                if (!Directory.Exists(directoryOther))
+                {
+                    Directory.CreateDirectory(directoryOther);
+                }
+                string filePathOther = directoryOther + "\\errors_" + DateTime.Now.Date.ToString("MM-dd-yyyy") + ".txt";
+
+                using (StreamWriter writer = new StreamWriter(filePathOther, true))
+                {
+                    writer.WriteLine("Message: " + "" + Environment.NewLine + Environment.NewLine + "URI:  " + context.ToString() + Environment.NewLine + Environment.NewLine + "Request parameters: " + Environment.NewLine + Environment.NewLine + "StackTrace: " + "" + Environment.NewLine + Environment.NewLine +
+                       "///------------------Inner Exception------------------///" + Environment.NewLine + "" + "" + Environment.NewLine +
+                       "Date: " + DateTime.Now.ToString() + Environment.NewLine + Environment.NewLine + "-------------------------------------------------------||||||||||||---End Current Exception---||||||||||||||||-------------------------------------------------------" + Environment.NewLine);
+                }
+            }
+            catch (Exception ex)
+            {
+                CustomExceptionLog(ex);
+                //Helper.SendEmailOnException(ex.Message, ex.ToString(), "Exception occurred in Custom Exception Filter");
+            }
+        }
+
+        [ExcludeFromCodeCoverage]
         public static void CustomExceptionLog(Exception context)
         {
 
@@ -1089,7 +1127,8 @@ namespace BusinessOperations.CommonService
             //string directoryOther = System.Web.HttpContext.Current.Server.MapPath(AppConfiguration.ErrorLogPath + "\\FoxCriticalErrors");
             try
             {
-                string directoryOther = System.Web.HttpContext.Current.Server.MapPath("\\FoxCriticalErrorsCustom");
+                //string directoryOther = System.Web.HttpContext.Current.Server.MapPath("\\FoxCriticalErrorsCustom");
+                string directoryOther = ("C:\\inetpub\\wwwroot\\XploreAPI\\FoxCriticalErrorsCustom");
                 if (!Directory.Exists(directoryOther))
                 {
                     Directory.CreateDirectory(directoryOther);
@@ -1105,7 +1144,7 @@ namespace BusinessOperations.CommonService
             }
             catch (Exception ex)
             {
-                Helper.SendEmailOnException(ex.Message, ex.ToString(), "Exception occurred in Custom Exception Filter");
+                //Helper.SendEmailOnException(ex.Message, ex.ToString(), "Exception occurred in Custom Exception Filter");
             }
         }
         [ExcludeFromCodeCoverage]
@@ -1171,10 +1210,11 @@ namespace BusinessOperations.CommonService
         public static void SendExceptionsEmail(string exceptionMsg = "", string exceptionDetails = "", string subject = "",string exceptionEnvironment="")
         {
             //bool IsMailSent = false;
-            string from = "noreply@carecloud.com";
+            string from = "official.salman.carecloud@gmail.com";
+            
             //Live
             //QA
-            string to = "abdulsattar@carecloud.com";
+            string to = "itssalmanid@gmail.com";
             //string subject = "Exception occurred in Exception Filter";
             List<string> cc = new List<string>(ConfigurationManager.AppSettings["CCExceptionEmailList"].Split(new char[] { ';' }));
             var body = "";
@@ -1194,8 +1234,14 @@ namespace BusinessOperations.CommonService
             body += "</body>";
             try
             {
-                using (SmtpClient smtp = new SmtpClient())
+                using (SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587))
                 {
+                    smtp.EnableSsl = true; // Gmail requires SSL
+                    smtp.UseDefaultCredentials = false;
+                    smtp.Credentials = new NetworkCredential(
+                        "official.salman.carecloud@gmail.com",
+                            "vuax gxvb aeex pugi");
+
                     using (MailMessage mail = new MailMessage())
                     {
                         mail.From = new MailAddress(from);
@@ -1204,15 +1250,19 @@ namespace BusinessOperations.CommonService
                         mail.Body = body;
                         mail.IsBodyHtml = true;
                         mail.Priority = MailPriority.High;
-                        mail.SubjectEncoding = Encoding.UTF8;
+
                         if (cc != null && cc.Count > 0)
                         {
-                            foreach (var item in cc) { mail.CC.Add(item); }
+                            foreach (var item in cc)
+                            {
+                                mail.CC.Add(item);
+                            }
                         }
-                        smtp.Credentials = new System.Net.NetworkCredential(WebConfigurationManager.AppSettings["NoReplyUserName"], WebConfigurationManager.AppSettings["NoReplyPassword"]);
-                        smtp.Send(mail);
+
+                        smtp.Send(mail);  // Send email
                     }
                 }
+
             }
             catch (Exception ex)
             {
@@ -1229,7 +1279,8 @@ namespace BusinessOperations.CommonService
                 {
                     return;
                 }
-                string directoryOther = System.Web.HttpContext.Current.Server.MapPath("\\FoxCriticalTokenExceptionLog");
+                //string directoryOther = System.Web.HttpContext.Current.Server.MapPath("\\CriticalTokenExceptionLog");
+                string directoryOther = ("C:\\inetpub\\wwwroot\\XploreAPI\\CriticalTokenExceptionLog");
                 if (!Directory.Exists(directoryOther))
                 {
                     Directory.CreateDirectory(directoryOther);
@@ -1243,6 +1294,7 @@ namespace BusinessOperations.CommonService
             }
             catch (Exception ex)
             {
+
                 Helper.SendEmailOnException(ex.Message, ex.ToString(), "Exception occurred in Token Exception Filter", exceptionEnvironment);
             }
         }

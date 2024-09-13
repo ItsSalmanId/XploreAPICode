@@ -1,0 +1,132 @@
+Message: An error occurred while updating the entries. See the inner exception for details.
+
+URI:  http://localhost:11492/api/SurveyAutomation/Login
+
+Request parameters: [{"APPLICATION_USER_ACCOUNTS_ID":138,"User_Name":"itssalmanid@gmail.com","PASSWORD":"test","EMAIL_ADDRESS":"itssalmanid@gmail.com","CREATED_BY":"Team","CREATED_DATE":"2024-08-21T21:19:27.407","MODIFIED_BY":"Team","MODIFIED_DATE":"2024-08-21T20:59:34.813","DELETED":false,"UserNameEmail":null,"LoginPassword":null,"IS_FOLLOWING":false,"ReelsCount":0,"FollowingCount":0,"FollowersCount":0,"ACCOUNT_TYPE":"Admin","Blocked":false,"UserReelsDetails":[],"UserSavedReelsDetails":[]}]
+
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at FOX.DataModels.GenericRepository.GenericRepository`1.Save() in C:\Users\Salman jani\source\repos\After change CODe\current\FoxRehabilitationAPI-1\FOX.DataModels\GenericRepository\GenericRepository.cs:line 259
+   at BusinessOperations.SurveyAutomationService.SurveyAutomationService.GenerateToken(UserProfileToken objUserProfileToken) in C:\Users\Salman jani\source\repos\After change CODe\current\FoxRehabilitationAPI-1\FOX.BusinessOperations\SurveyAutomationService\SurveyAutomationService.cs:line 1014
+   at FoxRehabilitationAPI.Controllers.SurveyAutomationController.Login(UserAccount objUserAccount) in C:\Users\Salman jani\source\repos\After change CODe\current\FoxRehabilitationAPI-1\FoxRehabilitationAPI\Controllers\SurveyAutomationController.cs:line 72
+   at lambda_method(Closure , Object , Object[] )
+   at System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.<>c__DisplayClass6_1.<GetExecutor>b__3(Object instance, Object[] methodParameters)
+   at System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ExecuteAsync(HttpControllerContext controllerContext, IDictionary`2 arguments, CancellationToken cancellationToken)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__3.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__3.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.AuthenticationFilterResult.<ExecuteAsync>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ExceptionFilterResult.<ExecuteAsync>d__6.MoveNext()
+
+///------------------Inner Exception------------------///
+Cannot insert the value NULL into column 'AUTH_TOKEN', table 'UAT.dbo.TBL_PROFILE_TOKENS'; column does not allow nulls. INSERT fails.
+The statement has been terminated.
+Date: 06/09/2024 9:44:59 pm
+
+-------------------------------------------------------||||||||||||---End Current Exception---||||||||||||||||-------------------------------------------------------
+Message: An error occurred while updating the entries. See the inner exception for details.
+
+URI:  http://localhost:11492/api/SurveyAutomation/Login
+
+Request parameters: [{"APPLICATION_USER_ACCOUNTS_ID":138,"User_Name":"itssalmanid@gmail.com","PASSWORD":"test","EMAIL_ADDRESS":"itssalmanid@gmail.com","CREATED_BY":"Team","CREATED_DATE":"2024-08-21T21:19:27.407","MODIFIED_BY":"Team","MODIFIED_DATE":"2024-08-21T20:59:34.813","DELETED":false,"UserNameEmail":null,"LoginPassword":null,"IS_FOLLOWING":false,"ReelsCount":0,"FollowingCount":0,"FollowersCount":0,"ACCOUNT_TYPE":"Admin","Blocked":false,"UserReelsDetails":[],"UserSavedReelsDetails":[]}]
+
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at FOX.DataModels.GenericRepository.GenericRepository`1.Save() in C:\Users\Salman jani\source\repos\After change CODe\current\FoxRehabilitationAPI-1\FOX.DataModels\GenericRepository\GenericRepository.cs:line 259
+   at BusinessOperations.SurveyAutomationService.SurveyAutomationService.GenerateToken(UserProfileToken objUserProfileToken) in C:\Users\Salman jani\source\repos\After change CODe\current\FoxRehabilitationAPI-1\FOX.BusinessOperations\SurveyAutomationService\SurveyAutomationService.cs:line 1014
+   at FoxRehabilitationAPI.Controllers.SurveyAutomationController.Login(UserAccount objUserAccount) in C:\Users\Salman jani\source\repos\After change CODe\current\FoxRehabilitationAPI-1\FoxRehabilitationAPI\Controllers\SurveyAutomationController.cs:line 72
+   at lambda_method(Closure , Object , Object[] )
+   at System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.<>c__DisplayClass6_1.<GetExecutor>b__3(Object instance, Object[] methodParameters)
+   at System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ExecuteAsync(HttpControllerContext controllerContext, IDictionary`2 arguments, CancellationToken cancellationToken)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__3.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__3.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.AuthenticationFilterResult.<ExecuteAsync>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ExceptionFilterResult.<ExecuteAsync>d__6.MoveNext()
+
+///------------------Inner Exception------------------///
+Cannot insert the value NULL into column 'AUTH_TOKEN', table 'UAT.dbo.TBL_PROFILE_TOKENS'; column does not allow nulls. INSERT fails.
+The statement has been terminated.
+Date: 06/09/2024 9:57:42 pm
+
+-------------------------------------------------------||||||||||||---End Current Exception---||||||||||||||||-------------------------------------------------------
+Message: An error occurred while updating the entries. See the inner exception for details.
+
+URI:  http://localhost:11492/api/SurveyAutomation/Login
+
+Request parameters: [{"APPLICATION_USER_ACCOUNTS_ID":138,"User_Name":"itssalmanid@gmail.com","PASSWORD":"test","EMAIL_ADDRESS":"itssalmanid@gmail.com","CREATED_BY":"Team","CREATED_DATE":"2024-08-21T21:19:27.407","MODIFIED_BY":"Team","MODIFIED_DATE":"2024-08-21T20:59:34.813","DELETED":false,"UserNameEmail":null,"LoginPassword":null,"IS_FOLLOWING":false,"ReelsCount":0,"FollowingCount":0,"FollowersCount":0,"ACCOUNT_TYPE":"Admin","Blocked":false,"UserReelsDetails":[],"UserSavedReelsDetails":[]}]
+
+StackTrace:    at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at FOX.DataModels.GenericRepository.GenericRepository`1.Save() in C:\Users\Salman jani\source\repos\After change CODe\current\FoxRehabilitationAPI-1\FOX.DataModels\GenericRepository\GenericRepository.cs:line 259
+   at BusinessOperations.SurveyAutomationService.SurveyAutomationService.GenerateToken(UserProfileToken objUserProfileToken) in C:\Users\Salman jani\source\repos\After change CODe\current\FoxRehabilitationAPI-1\FOX.BusinessOperations\SurveyAutomationService\SurveyAutomationService.cs:line 1014
+   at FoxRehabilitationAPI.Controllers.SurveyAutomationController.Login(UserAccount objUserAccount) in C:\Users\Salman jani\source\repos\After change CODe\current\FoxRehabilitationAPI-1\FoxRehabilitationAPI\Controllers\SurveyAutomationController.cs:line 72
+   at lambda_method(Closure , Object , Object[] )
+   at System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.<>c__DisplayClass6_1.<GetExecutor>b__3(Object instance, Object[] methodParameters)
+   at System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ExecuteAsync(HttpControllerContext controllerContext, IDictionary`2 arguments, CancellationToken cancellationToken)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__3.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__3.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.AuthenticationFilterResult.<ExecuteAsync>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ExceptionFilterResult.<ExecuteAsync>d__6.MoveNext()
+
+///------------------Inner Exception------------------///
+Cannot insert the value NULL into column 'AUTH_TOKEN', table 'UAT.dbo.TBL_PROFILE_TOKENS'; column does not allow nulls. INSERT fails.
+The statement has been terminated.
+Date: 06/09/2024 10:03:58 pm
+
+-------------------------------------------------------||||||||||||---End Current Exception---||||||||||||||||-------------------------------------------------------

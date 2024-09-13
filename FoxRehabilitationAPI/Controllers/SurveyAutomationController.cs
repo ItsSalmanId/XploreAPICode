@@ -15,6 +15,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using BusinessOperations.CommonService;
 
 
 namespace FoxRehabilitationAPI.Controllers
@@ -63,13 +64,17 @@ namespace FoxRehabilitationAPI.Controllers
         [HttpPost]
         public IHttpActionResult Login(UserAccount objUserAccount)
         {
+            Helper.TokenTaskCancellationExceptionLog("Start Function: Login");
+            //string directoryOther = System.Web.HttpContext.Current.Server.MapPath("\\CriticalTokenExceptionLog");
             if (objUserAccount.EMAIL_ADDRESS != null) // Replace with actual logic
             {
                 var token = GenerateJwtToken(objUserAccount.EMAIL_ADDRESS);
                 UserProfileToken userProfileToken = new UserProfileToken();
                 userProfileToken.USER_ID = objUserAccount.APPLICATION_USER_ACCOUNTS_ID;
                 userProfileToken.AUTH_TOKEN = token;
+                Helper.TokenTaskCancellationExceptionLog("Hit Function: Login");
                 Request.CreateResponse(HttpStatusCode.OK, _surveyAutomationService.GenerateToken(userProfileToken));
+                Helper.TokenTaskCancellationExceptionLog("end Function: Login");
                 return Ok(new { token });
             }
             return Unauthorized();
@@ -77,6 +82,7 @@ namespace FoxRehabilitationAPI.Controllers
 
         private string GenerateJwtToken(string username)
         {
+            Helper.TokenTaskCancellationExceptionLog("Start Function: GenerateJwtToken");
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes("YourSuperStrongSecretKey123456789@!"); // Use a strong secret key
             var tokenDescriptor = new SecurityTokenDescriptor
@@ -86,6 +92,7 @@ namespace FoxRehabilitationAPI.Controllers
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
             var token = tokenHandler.CreateToken(tokenDescriptor);
+            Helper.TokenTaskCancellationExceptionLog("End Function");
             return tokenHandler.WriteToken(token);
         }
         [HttpPost]
@@ -126,6 +133,20 @@ namespace FoxRehabilitationAPI.Controllers
                 return Request.CreateResponse(HttpStatusCode.BadRequest, "BusinessDetail model is empty");
             }
         }
+
+        [HttpPost]
+        public HttpResponseMessage GetBusinessByCategory(BusinessDetail objBusinessDetail)
+        {
+            if (objBusinessDetail != null)
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, _surveyAutomationService.GetBusinessByCategory(objBusinessDetail));
+            }
+            else
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, "BusinessDetail model is empty");
+            }
+        }
+
         [HttpPost]
         public HttpResponseMessage GetSelectedBusiness(BusinessDetail objBusinessDetail)
         {

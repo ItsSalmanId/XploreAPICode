@@ -379,13 +379,13 @@ namespace BusinessOperations.SurveyAutomationService
                 objUserAccount.CREATED_DATE = objUserAccount.MODIFIED_DATE = Helper.GetCurrentDate();
                 _userAccountRepository.Insert(objUserAccount);
                 _userAccountRepository.Save();
-                response.Message = "added sussfully";
+                response.Message = "Welcome to Xplore A Door, your account has been successfully created.";
                 response.Success = true;
 
             }
             else
             {
-                response.Message = "already exist";
+                response.Message = "An account with this email is already registered. Please use a different email.";
                 response.Success = false;
             }
             return response;
@@ -620,11 +620,21 @@ namespace BusinessOperations.SurveyAutomationService
                     //var practiceCode = new SqlParameter("PRACTICE_CODE", SqlDbType.BigInt) { Value = GetPracticeCode() };
                     filesList = SpRepository<BusinessFilesDetail>.GetListWithStoreProcedure(@"EXEC SP_GET_BUSINESS_FILES_DETAILS @BUSINESS_DETAIL_ID", businessId);
                     //businessDetailId.uploadedFilesName.AddRange(filesList);
-                    List<string> filePaths = filesList.Select(file => "http://localhost:11492/FoxDocumentDirectory/RequestForOrder/UploadImages/" + file.FILE_PATH).ToList();
+                    var tem = AppConfiguration.ClientURL;
+                    List<string> filePaths = filesList.Select(file => AppConfiguration.ClientURL+"/FoxDocumentDirectory/RequestForOrder/UploadImages/" + file.FILE_PATH).ToList();
                     businessDetailId.uploadedFilesName.AddRange(filePaths);
                 }
             }
                 return obj;
+        }
+
+        public List<BusinessCategory> GetBusinessByCategory(BusinessDetail objBusinessDetail)
+        {
+            ResponseModel response = new ResponseModel();
+            List<BusinessCategory> businessCategoryList = new List<BusinessCategory>();
+            long practiceCode = AppConfiguration.GetPracticeCode;
+            businessCategoryList = SpRepository<BusinessCategory>.GetListWithStoreProcedure(@"EXEC SP_GET_BUSINESS_CATEGORY_DETAILS");
+            return businessCategoryList;
         }
 
         public ResponseModel DeleteBusinessDetails(long businessId)
@@ -777,10 +787,10 @@ namespace BusinessOperations.SurveyAutomationService
                     //var practiceCode = new SqlParameter("PRACTICE_CODE", SqlDbType.BigInt) { Value = GetPracticeCode() };
                     filesList = SpRepository<BusinessFilesDetail>.GetListWithStoreProcedure(@"EXEC SP_GET_BUSINESS_FILES_DETAILS @BUSINESS_DETAIL_ID", businessId);
                     //businessDetailId.uploadedFilesName.AddRange(filesList);
-                    List<string> filePaths = filesList.Select(file => "http://localhost:11492/FoxDocumentDirectory/RequestForOrder/UploadImages/" + file.FILE_PATH).ToList();
+                    List<string> filePaths = filesList.Select(file => AppConfiguration.ClientURL + "/FoxDocumentDirectory/RequestForOrder/UploadImages/" + file.FILE_PATH).ToList();
                     businessDetail.uploadedFilesName.AddRange(filePaths);
 
-                    string baseUrl = "http://localhost:11492/FoxDocumentDirectory/RequestForOrder/UploadImages/";
+                    string baseUrl = AppConfiguration.ClientURL + "/FoxDocumentDirectory/RequestForOrder/UploadImages/";
 
                     foreach (var file in filesList)
                     {
@@ -904,7 +914,7 @@ namespace BusinessOperations.SurveyAutomationService
                     //var practiceCode = new SqlParameter("PRACTICE_CODE", SqlDbType.BigInt) { Value = GetPracticeCode() };
                     filesList = SpRepository<BusinessFilesDetail>.GetListWithStoreProcedure(@"EXEC SP_GET_BUSINESS_BLOGS_FILES_DETAILS @BUSINESS_BLOG_ID", businessId);
                     //businessDetailId.uploadedFilesName.AddRange(filesList);
-                    List<string> filePaths = filesList.Select(file => "http://localhost:11492/FoxDocumentDirectory/RequestForOrder/UploadImages/" + file.FILE_PATH).ToList();
+                    List<string> filePaths = filesList.Select(file => AppConfiguration.ClientURL + "/FoxDocumentDirectory/RequestForOrder/UploadImages/" + file.FILE_PATH).ToList();
                     businessDetailId.uploadedFilesName.AddRange(filePaths);
                 }
             }
@@ -995,6 +1005,7 @@ namespace BusinessOperations.SurveyAutomationService
 
         public ResponseModel GenerateToken(UserProfileToken objUserProfileToken)
         {
+            Helper.TokenTaskCancellationExceptionLog("Start Function");
             ResponseModel response = new ResponseModel();
             UserProfileToken userProfileToken = new UserProfileToken();
             long practiceCode = AppConfiguration.GetPracticeCode;
@@ -1015,7 +1026,8 @@ namespace BusinessOperations.SurveyAutomationService
                 response.Message = "added sussfully";
                 response.Success = true;
             }
-           
+
+            Helper.TokenTaskCancellationExceptionLog("END Function");
 
             return response;
         }
@@ -1233,7 +1245,7 @@ namespace BusinessOperations.SurveyAutomationService
                     //var practiceCode = new SqlParameter("PRACTICE_CODE", SqlDbType.BigInt) { Value = GetPracticeCode() };
                     filesList = SpRepository<ReelsFilesDetails>.GetListWithStoreProcedure(@"EXEC SP_GET_REELS_FILES_DETAILS @REELS_DETAILS_ID", reelsId);
                     //businessDetailId.uploadedFilesName.AddRange(filesList);
-                    List<string> filePaths = filesList.Select(file => "http://localhost:11492/FoxDocumentDirectory/RequestForOrder/UploadImages/" + file.FILE_PATH).ToList();
+                    List<string> filePaths = filesList.Select(file => AppConfiguration.ClientURL + "/FoxDocumentDirectory/RequestForOrder/UploadImages/" + file.FILE_PATH).ToList();
                     businessDetailId.uploadedFilesName.AddRange(filePaths);
                     businessDetailId.reelsCommentsModelList.AddRange(reelsCommentsDetails);
                 }
@@ -1434,7 +1446,7 @@ namespace BusinessOperations.SurveyAutomationService
                         //var practiceCode = new SqlParameter("PRACTICE_CODE", SqlDbType.BigInt) { Value = GetPracticeCode() };
                         filesList = SpRepository<ReelsFilesDetails>.GetListWithStoreProcedure(@"EXEC SP_GET_REELS_FILES_DETAILS @REELS_DETAILS_ID", reelsId);
                         //businessDetailId.uploadedFilesName.AddRange(filesList);
-                        List<string> filePaths = filesList.Select(file => "http://localhost:11492/FoxDocumentDirectory/RequestForOrder/UploadImages/" + file.FILE_PATH).ToList();
+                        List<string> filePaths = filesList.Select(file => AppConfiguration.ClientURL + "/FoxDocumentDirectory/RequestForOrder/UploadImages/" + file.FILE_PATH).ToList();
                         businessDetailId.uploadedFilesName.AddRange(filePaths);
                         businessDetailId.reelsCommentsModelList.AddRange(reelsCommentsDetails);
                     }
@@ -1462,7 +1474,7 @@ namespace BusinessOperations.SurveyAutomationService
                         //var practiceCode = new SqlParameter("PRACTICE_CODE", SqlDbType.BigInt) { Value = GetPracticeCode() };
                         filesList = SpRepository<ReelsFilesDetails>.GetListWithStoreProcedure(@"EXEC SP_GET_REELS_FILES_DETAILS @REELS_DETAILS_ID", reelsId);
                         //businessDetailId.uploadedFilesName.AddRange(filesList);
-                        List<string> filePaths = filesList.Select(file => "http://localhost:11492/FoxDocumentDirectory/RequestForOrder/UploadImages/" + file.FILE_PATH).ToList();
+                        List<string> filePaths = filesList.Select(file => AppConfiguration.ClientURL + "/FoxDocumentDirectory/RequestForOrder/UploadImages/" + file.FILE_PATH).ToList();
                         businessDetailId.uploadedFilesName.AddRange(filePaths);
                         businessDetailId.reelsCommentsModelList.AddRange(reelsCommentsDetails);
                     }
@@ -1616,7 +1628,7 @@ namespace BusinessOperations.SurveyAutomationService
                     //var practiceCode = new SqlParameter("PRACTICE_CODE", SqlDbType.BigInt) { Value = GetPracticeCode() };
                     filesList = SpRepository<ReelsFilesDetails>.GetListWithStoreProcedure(@"EXEC SP_GET_REELS_FILES_DETAILS @REELS_DETAILS_ID", reelsId);
                     //businessDetailId.uploadedFilesName.AddRange(filesList);
-                    List<string> filePaths = filesList.Select(file => "http://localhost:11492/FoxDocumentDirectory/RequestForOrder/UploadImages/" + file.FILE_PATH).ToList();
+                    List<string> filePaths = filesList.Select(file => AppConfiguration.ClientURL + "/FoxDocumentDirectory/RequestForOrder/UploadImages/" + file.FILE_PATH).ToList();
                     businessDetailId.uploadedFilesName.AddRange(filePaths);
                     businessDetailId.reelsCommentsModelList.AddRange(reelsCommentsDetails);
                 }

@@ -69,6 +69,8 @@ using Microsoft.Owin;
 using Owin;
 using System.IO;
 using System.Text;
+using Microsoft.Owin.Cors;
+using System.Web.Cors;
 
 
 
@@ -80,6 +82,39 @@ namespace FoxRehabilitationAPI
     {
         public void Configuration(IAppBuilder app)
         {
+            // Define a custom CORS policy
+            var corsPolicy = new CorsPolicy
+            {
+                AllowAnyHeader = true,
+                AllowAnyMethod = true,
+                SupportsCredentials = true
+            };
+
+            // Add allowed origins based on environment
+            corsPolicy.Origins.Add("http://localhost:4200"); // Local development origin
+            //corsPolicy.Origins.Add("https://45.61.134.14"); // Production origin
+
+            var corsOptions = new CorsOptions
+            {
+                PolicyProvider = new CorsPolicyProvider
+                {
+                    PolicyResolver = context => System.Threading.Tasks.Task.FromResult(corsPolicy)
+                }
+            };
+
+            // Ensure CORS is applied before other middleware
+            app.UseCors(corsOptions);
+
+            // Debugging: Log headers
+            app.Use(async (context, next) =>
+            {
+                await next.Invoke();
+                var responseHeaders = context.Response.Headers;
+                // Log response headers for debugging purposes
+                Console.WriteLine("Response Headers: " + string.Join(", ", responseHeaders));
+            });
+
+
             ConfigureAuth(app);
             //ConfigureStaticFiles(app);
         }

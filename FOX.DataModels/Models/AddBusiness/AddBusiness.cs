@@ -113,6 +113,12 @@ namespace FOX.DataModels.Models.AddBusiness
            public long BUSINESS_FILES_DTEAIL_ID { get; set; }
         }
 
+        public class BusinessCategory
+        {
+            public string BUSINESS_CATEGORY { get; set; }
+            public int CategoryCount { get; set; }
+        }
+
         [Table("TBL_BUSINESS_RATING")]
         public class BusinessRating
         {
